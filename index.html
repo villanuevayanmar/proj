@@ -1,19 +1,58 @@
-<!DOCTYPE html> 
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-   <title>Login Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Tech | Login</title>
+    <script src="login.js" defer></script>
   </head>
- <body>
-  <form>
-   <h1>Cyber TecH</h1>
-   <p>Hi, welcome to the Cyber Tech</p>
-   <p>Login Account</p>
-    <input type="text" placeholder="Username">
-     <br>
-    <input type="password" placeholder="Password">
-    <a href="dashboard.html">
-     <button type="button">Login</button>
-    </a>
-  </form>
- </body>
+  <body>
+    <header>
+      <h1>Cyber Tech</h1>
+      <p>Welcome to Cyber Tech.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="loginHeading">
+        <h2 id="loginHeading">Login Account</h2>
+
+        <p>
+          Demo login only: any non-empty username and password will continue.
+          Do not enter a real password. This page does not verify accounts.
+        </p>
+
+        <form id="loginForm">
+          <p>
+            <label for="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter your username"
+              autocomplete="username"
+              minlength="3"
+              maxlength="30"
+              required
+            >
+          </p>
+
+          <p>
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter any demo password"
+              autocomplete="current-password"
+              required
+            >
+          </p>
+
+          <button type="submit">Login</button>
+        </form>
+
+        <p id="loginMessage" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+  </body>
 </html>
