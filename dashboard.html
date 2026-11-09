@@ -1,145 +1,204 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Cyber Tech</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Tech | User Data</title>
+    <script src="dashboard.js" defer></script>
     <script src="script.js" defer></script>
   </head>
+
   <body>
-    <div>
-      <h2>User Data</h2>
+    <header>
+      <h1>Cyber Tech</h1>
+      <p id="welcomeMessage">User Data</p>
       <p>Use Cyber Tech with care.</p>
-    </div>
+    </header>
 
-    <form id="userForm">
-      <h4>Please fill up this form.</h4>
+    <main>
+      <section aria-labelledby="formHeading">
+        <h2 id="formHeading">User Information</h2>
+        <p>Fill in the form, then select Enter to review your information.</p>
+        <p>
+          This is a practice project. Your information is displayed in this
+          browser only and is not saved to a database. Avoid entering real
+          sensitive information.
+        </p>
 
-      <ul>
-        <li>
-          <h4>
-            Name:
+        <form id="userForm">
+          <p>
+            <label for="name">Full Name:</label>
             <input
               type="text"
               placeholder="Last, First M."
               name="fullName"
               id="name"
-            />
-          </h4>
-        </li>
+              autocomplete="name"
+              minlength="2"
+              maxlength="80"
+              required
+            >
+          </p>
 
-        <li>
-          <h4>
-            Age:
-            <input type="number" placeholder="18" name="age" id="age" />
-          </h4>
-        </li>
-
-        <li>
-          <h4>
-            Birthday:
-            <input type="date" name="date" id="birthday" />
-          </h4>
-        </li>
-
-        <li>
-          <h4>
-            Gender:
+          <p>
+            <label for="age">Age:</label>
             <input
-              type="text"
-              placeholder="Male/Female"
-              name="gender"
-              id="gender"
-            />
-          </h4>
-        </li>
+              type="number"
+              placeholder="18"
+              name="age"
+              id="age"
+              min="1"
+              max="120"
+              required
+            >
+          </p>
 
-        <li>
-          <h4>
-            Address:
+          <p>
+            <label for="birthday">Birthday:</label>
+            <input
+              type="date"
+              name="birthday"
+              id="birthday"
+              autocomplete="bday"
+              required
+            >
+          </p>
+
+          <p>
+            <label for="gender">Gender:</label>
+            <select name="gender" id="gender" required>
+              <option value="">Select an option</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Another identity">Another identity</option>
+              <option value="Prefer not to say">Prefer not to say</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="address">Address:</label>
             <input
               type="text"
               name="address"
-              placeholder="Naga, Cebu City"
+              placeholder="City or municipality"
               id="address"
-            />
-          </h4>
-        </li>
+              autocomplete="street-address"
+              maxlength="150"
+              required
+            >
+          </p>
 
-        <li>
-          <h4>
-            Contact Number:
+          <p>
+            <label for="contact">Contact Number:</label>
             <input
               type="tel"
               name="contact"
               placeholder="09123456789"
               id="contact"
-            />
-          </h4>
-        </li>
+              autocomplete="tel"
+              pattern="[0-9+() -]{7,20}"
+              title="Enter 7 to 20 characters using numbers, spaces, +, parentheses, or hyphens."
+              required
+            >
+          </p>
 
-        <li>
-          <h4>
-            Email Address:
+          <p>
+            <label for="email">Email Address:</label>
             <input
               type="email"
               name="email"
               placeholder="example@gmail.com"
               id="email"
-            />
-          </h4>
-        </li>
+              autocomplete="email"
+              maxlength="254"
+              required
+            >
+          </p>
 
-        <li>
-          <h4>
-            Course:
-            <input type="text" name="course" placeholder="BSIT" id="course" />
-          </h4>
-        </li>
+          <p>
+            <label for="course">Course:</label>
+            <input
+              type="text"
+              name="course"
+              placeholder="BSIT 1-1"
+              id="course"
+              maxlength="50"
+              required
+            >
+          </p>
 
-        <li>
-          <h4>
-            Year Level:
-            <input type="number" name="year" placeholder="1" id="year" />
-          </h4>
-        </li>
+          <p>
+            <label for="year">Year Level:</label>
+            <input
+              type="number"
+              name="year"
+              placeholder="1"
+              id="year"
+              min="1"
+              max="6"
+              required
+            >
+          </p>
 
-        <li>
-          <h4>
-            Hobbies:
+          <p>
+            <label for="hobbies">Hobbies:</label>
             <input
               type="text"
               name="hobbies"
-              placeholder="Sleep"
+              placeholder="Reading, gaming, sleeping..."
               id="hobbies"
-            />
-          </h4>
-        </li>
-      </ul>
+              maxlength="150"
+            >
+          </p>
 
-      <button type="submit" id="submitBtn">Enter</button>
-    </form>
+          <button type="submit">Enter</button>
+          <button type="reset">Clear Form</button>
+        </form>
 
-    <br />
-    <hr />
+        <p id="formMessage" role="status" aria-live="polite"></p>
+      </section>
 
-    <div id="outBox">
-      <h3>Your Information</h3>
+      <hr>
 
-      <p>Name: <span id="oName"></span></p>
-      <p>Age: <span id="oAge"></span></p>
-      <p>Birthday: <span id="oBirthday"></span></p>
-      <p>Gender: <span id="oGender"></span></p>
-      <p>Address: <span id="oAddress"></span></p>
-      <p>Contact Number: <span id="oContact"></span></p>
-      <p>Email Address: <span id="oEmail"></span></p>
-      <p>Course: <span id="oCourse"></span></p>
-      <p>Year Level: <span id="oYear"></span></p>
-      <p>Hobbies: <span id="oHobbies"></span></p>
-    </div>
+      <section id="outBox" aria-labelledby="outputHeading" hidden>
+        <h2 id="outputHeading">Your Information</h2>
 
-    <br />
+        <dl>
+          <dt>Name</dt>
+          <dd id="oName"></dd>
 
-    <a href="index.html">
-      <button type="button">Logout</button>
-    </a>
+          <dt>Age</dt>
+          <dd id="oAge"></dd>
+
+          <dt>Birthday</dt>
+          <dd id="oBirthday"></dd>
+
+          <dt>Gender</dt>
+          <dd id="oGender"></dd>
+
+          <dt>Address</dt>
+          <dd id="oAddress"></dd>
+
+          <dt>Contact Number</dt>
+          <dd id="oContact"></dd>
+
+          <dt>Email Address</dt>
+          <dd id="oEmail"></dd>
+
+          <dt>Course</dt>
+          <dd id="oCourse"></dd>
+
+          <dt>Year Level</dt>
+          <dd id="oYear"></dd>
+
+          <dt>Hobbies</dt>
+          <dd id="oHobbies"></dd>
+        </dl>
+      </section>
+    </main>
+
+    <footer>
+      <button type="button" id="logoutBtn">Logout</button>
+    </footer>
   </body>
 </html>
